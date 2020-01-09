@@ -1,0 +1,36 @@
+page-config {
+
+    ion-content, ion-item {
+        color: color($colors, gs-text) !important;
+        background-color: color($colors, dark) !important;
+    }
+
+    ion-content {
+        ion-list-header {
+            color: color($colors, gs-orange) !important;
+            background-color: color($colors, dark) !important;
+            border-top: 0 !important;
+            margin: 0 !important;
+        }
+    }
+
+    .colorWrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        div {
+            flex-grow: 1;
+            margin: 2px;
+            text-align: center;
+
+            &.active:before {
+                content: '';
+            }
+            &.active:after {
+                content: '*';
+            }
+        }
+    }
+
+}

@@ -1,3 +1,36 @@
 page-home {
 
+    scroll-content {
+        display: flex;
+    }
+
+    #container {
+        touch-action: none; //Hammer.js needs this.
+        height: 100%;
+        width: 100%;
+        background-color: #000000;
+        ion-grid {
+            height: 100%;
+            width: 100%;
+            ion-row {
+                flex: 1;
+                align-items: center;    
+                ion-col {
+                    text-align: center;
+                }
+            }
+        }
+    }
+        
+    #seconds{
+        position: absolute;
+        right: 25%;
+        bottom: 30px;
+        font-size: 20px;
+        width: 50%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+ 
 }

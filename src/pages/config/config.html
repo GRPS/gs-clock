@@ -1,0 +1,65 @@
+<ion-header>
+	<ion-navbar color="gs-grey">
+		<ion-title>Configuration</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list no-lines>
+
+	<ion-list-header>General Settings</ion-list-header>
+
+	<ion-item>
+		<ion-label>Allow gestures</ion-label>
+		<ion-toggle [ngModel]="clock?.gestures" (ionChange)="ToggleGestures()"></ion-toggle>
+	</ion-item>
+
+	<ion-list-header>Clock Look and Feel</ion-list-header>
+
+	<ion-item>
+		<div [ngStyle]="{'color':clock?.color}" style="background-color:#000000; width:100%; font-size:15vh; text-align:center;">
+			{{ clock?.dt | date:"hh:mm" }}
+		</div>
+	</ion-item>
+
+	<ion-list-header>Available Colours</ion-list-header>
+	
+	<ion-item class="colours">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="colorWrapper">
+					<div *ngFor="let color of colours; let i = index" [class.active]="i==clock?.colorIndex" (click)="SetColour(i)" [ngStyle]="{'background-color':color.hex[clock?.shadeIndex]}">{{ color.name }}</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-item>
+
+	<ion-list-header>Colour Contrast</ion-list-header>
+	
+	<ion-item class="colours">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="colorWrapper">
+					<div *ngFor="let shade of shades; let i = index" [class.active]="i==clock?.shadeIndex" (click)="DoShade(i)"
+						[ngStyle]="{'background-color':colours[clock?.colorIndex].hex[i]}">{{ shade }}</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-item>
+
+	<ion-list-header>Screen Brightness</ion-list-header>
+
+	<ion-item class="colours">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="colorWrapper">
+					<div *ngFor="let shade2 of shades2;" [class.active]="shade2.level==clock?.brightness" (click)="DoShade2(shade2?.level)">{{ shade2?.name }}</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-item>
+
+  </ion-list>
+
+</ion-content>

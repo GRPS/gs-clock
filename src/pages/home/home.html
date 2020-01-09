@@ -1,14 +1,32 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content [ngStyle]="{'color':clock?.color}" no-bounce>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+	<div id="container" [ngStyle]="{'font-size':clock?.size, 'font-weight':clock?.weight}"
+	  (swipeleft)="swipeLeft()" 
+	  (swiperight)="swipeRight()" 
+	  (swipeup)="swipeUp()" 
+	  (swipedown)="swipeDown()" 
+	  (pinchin)="pinchIn()" 
+	  (pinchout)="pinchOut()"
+	  (tap)="tap()">
+	
+	  <ion-grid showWhen="portrait">
+		<ion-row>
+		  <ion-col (press)="toggleGesture()">{{ clock?.dt | date:"hh" }}</ion-col>
+		</ion-row>
+		<ion-row>
+		  <ion-col>{{ clock?.dt | date:"mm" }}</ion-col>
+		</ion-row>
+	  </ion-grid>
+  
+	  <ion-grid showWhen="landscape">
+		<ion-row>
+		  <ion-col>{{ clock?.dt | date:"hh:mm" }}</ion-col>
+		</ion-row>
+	  </ion-grid>
+  
+	</div>
+  
+	<div id="seconds" (press)="config()">{{ clock?.dt | date:"ss" }}</div>
+  
+  </ion-content>
+  
